@@ -30,6 +30,10 @@ Authentication
 
 To authenticate you must use tht X-API-KEY header with your API-KEY.
 
+Routes and parameters
+---------
+We use kebab-style-lower-case-urls with parameters in camelCase
+
 JSON only
 ---------
 

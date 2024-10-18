@@ -6,7 +6,7 @@ Welcome to the BookingStudio API. This documentation if for the latest BookingSt
 Root Url
 --------
 
-All URLs start with **`https://{customerId}-api.bookingstudio.dk`**. URLs are HTTPS only. The {customerId} should ne replaced with the ID of the customer!
+All URLs start with **`https://{customerId}-api.bookingstudio.dk`**. URLs are HTTPS only. The {customerId} should be replaced with the ID of the customer!
 
 Legacy API
 ----------
@@ -56,7 +56,7 @@ If the `Link` header is blank, that's the last page. The BookingStudio API also 
 Using HTTP caching
 ------------------
 
-You must use HTTP freshness headers to speed up your application and lighten the load on our servers. Most API responses will include an `ETag` or `Last-Modified` header. When you first request a resource, store these values. On subsequent requests, submit them back to us as `If-None-Match` and `If-Modified-Since`, respectively. If the resource hasn't changed since your last request, you'll get a `304 Not Modified` response with no body, saving you the time and bandwidth of sending something you already have.
+You must use HTTP freshness headers to speed up your application and lighten the load on our servers. Most API responses will include an `ETag` or `Last-Modified` header. When you first request a resource, store these values. On subsequent requests, submit them back to us as `If-None-Match` and `If-Modified-Since`, respectively. If the resource hasn't changed since your last request, you'll get a `304 Not Modified` response with an empty body, saving you the time and bandwidth of sending something you already have.
 
 
 Handling errors
@@ -79,10 +79,18 @@ We return a [429 Too Many Requests](http://tools.ietf.org/html/draft-nottingham-
 
 Plan ahead to gracefully handle the failure modes that API backpressure will exert on your integration. Multiple rate limits are in effect, e.g. for GET vs POST requests and per-second/hour/day limits, and they're adjusted dynamically, so responding to them dynamically is essential, particularly at high traffic levels.
 
-For a sense of scale, the first rate limit you'll commonly encounter is currently a token bucket with 60 requests being filled with 10 requests per 10 seconds per API Key.
+For a sense of scale, the first rate-limit you'll commonly encounter is currently a token bucket with 60 requests being filled with 10 requests per 10 seconds per API Key.
+
+> [!NOTE]
+> Some endpoints have different rate limits. Please consult the documentation for the specific endpoint you are using.
 
 ### 5xx Server Errors
 
 If BookingStudio is having trouble, you will get a response with a 5xx status code indicating a server error. 500 (Internal Server Error), 502 (Bad Gateway), 503 (Service Unavailable), and 504 (Gateway Timeout) may be retried with [exponential backoff](https://en.wikipedia.org/wiki/Exponential_backoff).
 
 Read more about [5xx server errors](https://en.wikipedia.org/wiki/List_of_HTTP_status_codes#5xx_Server_errors)
+
+## Developer Guides
+
+* [Developer Guide - Inventory and Bookings](developer-guides/inventory-and-bookings/index.md)
+

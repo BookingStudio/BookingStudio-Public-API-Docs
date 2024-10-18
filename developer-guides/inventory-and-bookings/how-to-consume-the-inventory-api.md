@@ -12,62 +12,11 @@ The API is designed to be consumed by `Partners` that want to integrate the `Cli
 > [!IMPORTANT]
 > Please refer the [terminology document](terminology.md) for a detailed explanation of the terminology used in this document.
 
-## Basic Information About the Api
-
-This section provides basic information about the API. It includes information about `Authentication`, the `User-Agent`,
-the `Versioning`, and the `Rate Limiting`.
-
-### Authentication
-
-The API uses HTTP Basic Authentication. You need to obtain an api key from the `Client` in order to consume the ´Api`.
-The api key is used as the username and the password are empty.
-
-### User-Agent
-
-You should set the `User-Agent` header to a string that identifies your application. For example:
-
-```
-User-Agent: MyApplication/1.0
-```
-
-> [!IMPORTANT]
-> If you don't set the `User-Agent` header, your requests will be rejected.
-
-### Versioning
-
-The API is versioned. The version is specified in the header of the request. It should not be confused with the version
-specified in the `Uri` of the request. This refers to the version of the API itself.
-
-> [!IMPORTANT]
-> Each endpoint has its own version that should be used and provided in the header of the request.
-
-### Rate Limiting
-
-The API is rate limited. If you exceed the rate limit you will receive a 429 status code, and you will have to wait
-before you can make another request.
-
-> [!WARNING]
-> Some `Endpoints` has a fair usage policy. This means that you are only allowed to fetch in line with the policy
-> outlined in this document. This is a soft policy, and you will not be blocked if you exceed the limit, but we reserve
-> the
-> right to block you, **without notice**, if you exceed the limit by a large margin. This is to ensure that the system
-> is
-> not overloaded and for the benefit of all `Partners` and `Clients`.
-
-> [!IMPORTANT]
-> If you are being rate limited, you should implement an exponential backoff strategy. This means that you should wait
-> before making another request and not make another request immediately.
-
-## Consuming the API
-
-This sections describes how to consume the API on a high level. It includes information about the endpoints and how to
-use them.
-
-### Fetching Languages
+## Fetching Languages
 
 The API provides an endpoint with all the `Languages` available in the `Client`.
 
-#### Example Request
+### Example Request
 
 > [!NOTE]
 > Use version 1 of this `Endpoint`
@@ -85,11 +34,11 @@ Version: 1
 > The `Id` of the language is **not** the same across `Clients` and should be treated as unique for the `Client` you are
 > working with.
 
-### Fetching Currencies
+## Fetching Currencies
 
 The API provides an endpoint with all the `Currencies` available in the `Client`.
 
-#### Example Request
+### Example Request
 
 > [!NOTE]
 > Use version 1 of this `Endpoint`
@@ -107,7 +56,7 @@ Version: 1
 > The `Id` of the currency is **not** the same across `Clients` and should be treated as unique for the `Client` you are
 > working with.
 
-### Fetching Items
+## Fetching Items
 
 The API provides an `Endpoint` with all the `Items` made available for the `Partner` by the `Client`.
 
@@ -118,7 +67,7 @@ The API provides an `Endpoint` with all the `Items` made available for the `Part
 > [!NOTE]
 > At the moment extras can only be added when you're creating a booking.
 
-#### Example Request and Response
+### Example Request and Response
 
 > [!NOTE]
 > Use version 1 of this `Endpoint`
@@ -144,11 +93,11 @@ Version: 1
 </Items>
 ```
 
-### Fetching Lodgings
+## Fetching Lodgings
 
 The API provides an `Endpoint` with all the `Lodgings` made available for the `Partner` by the `Client`.
 
-#### Example Request and Response
+### Example Request and Response
 
 > [!NOTE]
 > Use version 1 of this `Endpoint`
@@ -174,7 +123,7 @@ Version: 1
 </Lodgings>
 ```
 
-### Fetching BookingOptions
+## Fetching BookingOptions
 
 The API provides an `Endpoint` where you can query the `BookingOptions` available for the `Lodgings` made available for
 the `Partner` by the `Client`.
@@ -184,7 +133,7 @@ the `Partner` by the `Client`.
 > strategy. We recommend that you import the most common combinations and then update the prices for the other
 > combinations that are not imported.
 
-#### The Most Important Parameters
+### The Most Important Parameters
 
 The most important parameters for this `Endpoint` are:
 
@@ -199,10 +148,10 @@ The most important parameters for this `Endpoint` are:
 
 *To see the full list of parameters, please refer to the API documentation.*
 
-#### Example Request and Response
+### Example Request and Response
 
 > [!WARNING]
-> Always use version 3 of our BookingOption. Version 1 and 2 is deprecated and will be removed.
+> Use version 3 of this `Endpoint`. Version 1 and 2 is deprecated and will be removed.
 
 > [!NOTE]
 > **Rate Limit** You're allowed to fetch the prices once per language and reasonable person combination every night (
@@ -244,9 +193,9 @@ The response will be paginated using the **RFC5988 convention** with the `Link` 
 Link: <https://{apiHost}/rest/v1/bookingoptions.xml?lan=1&pos=2055489e-bd01-4ec4-9ade-a3445d65ade8> rel="next"
 ```
 
-#### References
+### References
 
-##### Reference for the BookingOption Element (Response)
+#### Reference for the BookingOption Element (Response)
 
 Here are a list of the most important data on a `BookingOption`.
 
@@ -288,7 +237,7 @@ Here are a list of the most important data on a `BookingOption`.
 > own website.
 > If you need those `BookingOptions` you need to contact the `Client` to get access to them.
 
-##### Reference for the ItemPrice Element (Response)
+#### Reference for the ItemPrice Element (Response)
 
 Here are a list of the data on a `ItemPrice` element.
 
@@ -301,17 +250,17 @@ Here are a list of the data on a `ItemPrice` element.
 | MinQuantity | Integer | The minimum quantity of the `Item` that can be added to the `Booking` |
 | MaxQuantity | Integer | The maximum quantity of the `Item` that can be added to the `Booking` |
 
-### Fetching Calendars
+## Fetching Calendars
 
 The API provides an `Endpoint` with the availability of all the `Lodgings` made available for the `Partner` by the
 `Client`.
 
 You can easily parse each calendar and mark affected `BookingOptions` as unavailable on your side.
 
-#### Example Request and Response
+### Example Request and Response
 
 > [!WARNING]
-> Use version 2 of our Calendar `Endpoint`. Version 1 is deprecated and will be removed.
+> Use version 2 of this `Endpoint`. Version 1 is deprecated and will be removed.
 
 > [!NOTE]
 > **Rate Limit** You're allowed to fetch this list every half an hour around the clock to keep the data in sync.
@@ -338,9 +287,9 @@ Version: 2
 > This endpoint utilizes our fair usage policy, meaning it's allowed to fetch this list every half an hour
 > around the clock to keep the data in sync.
 
-#### References
+### References
 
-##### Reference for the Calendar Element (Response)
+#### Reference for the Calendar Element (Response)
 
 | Name              | Type    | Description                                                                                                                                                                                                                                            |
 |-------------------|---------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -349,7 +298,7 @@ Version: 2
 | Availabilities    | String  | A comma separated list of availabilities for each day in the calendar. The value is `1` if the lodging is available and `0` if the lodging is not available. The first value is for the `AnchorDate` and the last is for the last day in the calendar. |
 | SeasonCodes       | String  | A comma separated list of season codes for each day in the calendar. The first value is for the `AnchorDate` and the last is for the last day in the calendar.                                                                                         |
 
-### Checking for Availability on Checkout
+## Checking for Availability on Checkout
 
 We recommend that you check for availability during checkout to make sure that the `BookingOption` is still
 available and to get the correct prices for both the `Booking` and the `Items` for the specific request.
@@ -357,10 +306,10 @@ available and to get the correct prices for both the `Booking` and the `Items` f
 The request will return a **200 status code** if the `BookingOption` is available. Otherwise, it will return a **404
 status code** meaning that the `BookingOption` is not available.
 
-#### Example Request and Response
+### Example Request and Response
 
 > [!WARNING]
-> Always use version 2 of this `Endpoint`. Version 1 is deprecated and will be removed.
+> Use version 2 of this `Endpoint`. Version 1 is deprecated and will be removed.
 
 > [!NOTE]
 > **Rate Limit** You're allowed to check the availability every time a `BookingOption` is selected by the `Guest`. There
@@ -431,7 +380,7 @@ Status: 200 OK
 > If the `BookingOption` is available, you'll get a complete `BookingOption` with the `Booking` price and all the prices
 > for both mandatory `Items` and optional `Items`.
 
-### Webhooks
+## Webhooks
 
 If the `Client` has our `Automation Module` enabled, it's possible for them to set up a webhook that can help to keep
 your data in sync with the `Client`.
@@ -445,3 +394,8 @@ We have webhooks for the following events to help you keep your data in sync:
 > Prices can change by custom rules laid out by the `Client`. This normally happens when the date changes from today to
 > tomorrow. The webhook for prices will **not** be called for these changes, but the nightly import will make sure to
 > catch these changes.
+
+## Learn More
+
+* [How to Create Bookings](how-to-create-bookings.md)
+* [Sync Strategy](sync-strategy.md)

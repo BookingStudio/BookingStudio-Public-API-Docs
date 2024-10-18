@@ -39,7 +39,7 @@ options are:
 ### Example Request and Response
 
 > [!WARNING]
-> Use version 3 of our Booking `Endpoint`. Version 1 and 2 is deprecated and will be removed.
+> Use version 3 of this `Endpoint`. Version 1 and 2 is deprecated and will be removed.
 
 > [!NOTE]
 > **Rate Limit** Rate limiting is in place to prevent abuse. If you exceed the rate limit you will receive a 429 status.
@@ -198,3 +198,7 @@ This is the root element for the `Payment`. Fields must be provided as attribute
   yet.
 * **Invoice**: When the `OrderItem` has this type, it means that the `Booking` was created and full payment or partial
   payment has been made.
+
+## Learn More
+
+* [Sync Strategy](sync-strategy.md)

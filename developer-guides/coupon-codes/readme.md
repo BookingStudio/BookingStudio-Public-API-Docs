@@ -65,9 +65,9 @@ sequenceDiagram
 
 ### API documentation 
 
-¹ [/rest/v1/bookingoptions](https://videodemo-api.bookingstudio.dk/rest/v1/docs.html#resource-bookingoptions)<br/>
-² [/api/admin/coupon-codes/redemptions/reserved](https://videodemo-api.bookingstudio.dk/api/swagger/index.html#/Coupon%20Codes/ReserveCouponCodeForRedemption)<br/>
-³ [/api/admin/gift-cards/codes/validate](https://videodemo-api.bookingstudio.dk/api/swagger/index.html#/Gift%20cards/ValidateGiftCardCodes)<br/>
-⁴ [/v1/payrates.xml](https://videodemo-api.bookingstudio.dk/rest/v1/docs.html#resource-bookingoptions)<br/>
-⁵ [/rest/v1/bookings/create.xml](https://videodemo-api.bookingstudio.dk/rest/v1/docs.html#resource-bookings)<br/>
-⁶ [/api/admin/gift-cards/apply](https://videodemo-api.bookingstudio.dk/api/swagger/index.html#/Gift%20cards/ApplyGiftCardCodes)<br/>
+¹ [/rest/v1/bookingoptions](https://videodemo-api.bookingstudio.dk/rest/v1/docs.html#resource-bookingoptions{target=_blank})<br/>
+² [/api/admin/coupon-codes/redemptions/reserved](https://videodemo-api.bookingstudio.dk/api/swagger/index.html#/Coupon%20Codes/ReserveCouponCodeForRedemption{target=_blank})<br/>
+³ [/api/admin/gift-cards/codes/validate](https://videodemo-api.bookingstudio.dk/api/swagger/index.html#/Gift%20cards/ValidateGiftCardCodes{target=_blank})<br/>
+⁴ [/v1/payrates.xml](https://videodemo-api.bookingstudio.dk/rest/v1/docs.html#resource-bookingoptions{target=_blank})<br/>
+⁵ [/rest/v1/bookings/create.xml](https://videodemo-api.bookingstudio.dk/rest/v1/docs.html#resource-bookings{target=_blank})<br/>
+⁶ [/api/admin/gift-cards/apply](https://videodemo-api.bookingstudio.dk/api/swagger/index.html#/Gift%20cards/ApplyGiftCardCodes{target=_blank})<br/>

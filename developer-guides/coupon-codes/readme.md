@@ -1,8 +1,13 @@
-# Coupon Codes API
+# Coupon codes API
 
-This API is used to admin and redeem coupon codes. The whole integration spans both minimal api for CRUD and reserve of coupon codes. Legacy v1 API is used to make a booking using a reserved coupon code.
+This API is used to administer (CRUD) coupon codes and its groups.
 
-# Sequence diagram of booking flow using payment, coupon code, gift cards 
+## Coupon code redemption
+
+The redemption process starts by reserve a coupon code for redemption against a bookingoption. 
+The actual redemption is done as a part of the booking request in legacy v1 API where the reservation token of the coupon code is applied.
+
+### Sequence diagram of booking flow using payment, coupon code, gift cards 
 ``` mermaid
 sequenceDiagram
     actor c as Customer
@@ -63,7 +68,9 @@ sequenceDiagram
     end
 ```
 
-### API documentation 
+### API documentation
+> [!NOTE] 
+Links point to videodemo api which should be exchanged to actual client FQDN
 
 ¹ [/rest/v1/bookingoptions](https://videodemo-api.bookingstudio.dk/rest/v1/docs.html#resource-bookingoptions{target=_blank})<br/>
 ² [/api/admin/coupon-codes/redemptions/reserved](https://videodemo-api.bookingstudio.dk/api/swagger/index.html#/Coupon%20Codes/ReserveCouponCodeForRedemption{target=_blank})<br/>

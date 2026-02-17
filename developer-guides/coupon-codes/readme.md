@@ -1,4 +1,4 @@
-#Coupon Codes API
+# Coupon Codes API
 
 This API is used to admin and redeem coupon codes. The whole integration spans both minimal api for CRUD and reserve of coupon codes. Legacy v1 API is used to make a booking using a reserved coupon code.
 

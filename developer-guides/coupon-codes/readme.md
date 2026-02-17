@@ -23,7 +23,7 @@ sequenceDiagram
     opt with coupon code redemption
     c->>w: Apply coupon code(couponCode)
     alt couponCode valid on bookingOption
-    cl->>+ma: couponCodeReservationToken:=/api/admin/coupon-codes/redemptions/reserved (couponCode, bookingOption, reservationTimeInSeconds)
+    cl->>+ma: couponCodeReservationToken:=/api/admin/coupon-codes/redemptions/reserved (couponCode, bookingOption, reservationTimeInSeconds)¹
     cl-->>w: couponCodeReservationToken
     end
     end
@@ -31,7 +31,7 @@ sequenceDiagram
     loop foreach gift card code
     c->>w: applyGiftCardCode(giftcardCode)
     w-->>cl: giftcardCode
-    cl->>ma: validatedGiftCard:=/api/admin/gift-cards/codes/validate (giftcardCode)
+    cl->>ma: validatedGiftCard:=/api/admin/gift-cards/codes/validate (giftcardCode) <sup>2</sup>
     alt validatedGiftCard is valid
     cl->>cl: giftCards = [validatedGiftCard, giftCards ..]
     end
